@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Generador de iconos</title>
+  <style>
+    body { font-family: system-ui, sans-serif; background: #0f172a; color: #f1f5f9; padding: 1rem; }
+    a { display: block; margin: 0.6rem 0; color: #22c55e; font-size: 1.1rem; }
+  </style>
+</head>
+<body>
+  <h1>Generador de iconos</h1>
+  <p>Haz clic en cada enlace para descargar el PNG.</p>
+  <div id="salida"></div>
+
+  <script>
+    function crearIcono(tam, escalaEmoji, nombre) {
+      const canvas = document.createElement("canvas");
+      canvas.width = canvas.height = tam;
+      const ctx = canvas.getContext("2d");
+
+      // Fondo a sangre completa (necesario para el icono maskable)
+      ctx.fillStyle = "#0f172a";
+      ctx.fillRect(0, 0, tam, tam);
+
+      // Emoji centrado
+      ctx.font = `${tam * escalaEmoji}px "Segoe UI Emoji", "Apple Color Emoji", "Noto Color Emoji", sans-serif`;
+      ctx.textAlign = "center";
+      ctx.textBaseline = "middle";
+      ctx.fillText("💪", tam / 2, tam / 2 + tam * 0.04);
+
+      canvas.toBlob((blob) => {
+        const enlace = document.createElement("a");
+        enlace.href = URL.createObjectURL(blob);
+        enlace.download = nombre;
+        enlace.textContent = `⬇ Descargar ${nombre}`;
+        document.getElementById("salida").appendChild(enlace);
+      });
+    }
+
+    crearIcono(192, 0.6, "icon-192.png");
+    crearIcono(512, 0.6, "icon-512.png");
+    crearIcono(512, 0.5, "icon-maskable-512.png"); // más pequeño: zona segura del 80%
+  </script>
+</body>
+</html>

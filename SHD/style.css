@@ -1,0 +1,248 @@
+:root {
+  --bg: #08111f;
+  --bg-2: #0f1d35;
+  --card: rgba(19, 31, 51, 0.9);
+  --card-strong: #132340;
+  --borde: rgba(148, 163, 184, 0.2);
+  --texto: #ecf5ff;
+  --texto-suave: #b4c4d9;
+  --acento: #62f0a4;
+  --acento-2: #2dd4bf;
+  --acento-hover: #4edc90;
+  --peligro: #ff6b6b;
+  --sombra: 0 20px 45px rgba(8, 15, 30, 0.5);
+  --radio: 20px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background:
+    radial-gradient(circle at top, rgba(45, 212, 191, 0.18), transparent 30%),
+    linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%);
+  color: var(--texto);
+  min-height: 100vh;
+  padding: calc(1rem + env(safe-area-inset-top, 0px)) 1rem calc(5rem + env(safe-area-inset-bottom, 0px));
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(98, 240, 164, 0.08), transparent 40%);
+  pointer-events: none;
+}
+
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem;
+  max-width: 720px;
+  margin: 0 auto 1rem;
+  padding: 0.9rem 1rem;
+  border: 1px solid var(--borde);
+  border-radius: 18px;
+  background: rgba(15, 23, 42, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: var(--sombra);
+}
+
+.topbar h1 {
+  font-size: clamp(1.1rem, 3vw, 1.5rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 5.7rem;
+  font-size: 0.73rem;
+  padding: 0.42rem 0.75rem;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--acento), var(--acento-2));
+  color: #062118;
+  font-weight: 700;
+  box-shadow: 0 8px 18px rgba(98, 240, 164, 0.35);
+}
+
+.badge.offline {
+  background: linear-gradient(135deg, #ff7a7a, var(--peligro));
+  color: #fff;
+  box-shadow: 0 8px 18px rgba(239, 68, 68, 0.3);
+}
+
+main {
+  max-width: 720px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+h2 {
+  font-size: 1.05rem;
+  margin-bottom: 0.9rem;
+  color: var(--texto);
+  letter-spacing: -0.02em;
+}
+
+.card {
+  background: linear-gradient(180deg, rgba(19, 31, 51, 0.96), rgba(10, 17, 30, 0.94));
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+  padding: 1.1rem;
+  box-shadow: var(--sombra);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+label {
+  font-size: 0.8rem;
+  color: var(--texto-suave);
+  font-weight: 600;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 0.85rem 0.9rem;
+  border-radius: 12px;
+  border: 1px solid rgba(148, 163, 184, 0.17);
+  background: rgba(7, 13, 24, 0.8);
+  color: var(--texto);
+  font: inherit;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: rgba(180, 196, 217, 0.7);
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+  border-color: rgba(98, 240, 164, 0.8);
+  box-shadow: 0 0 0 4px rgba(98, 240, 164, 0.18);
+}
+
+button {
+  appearance: none;
+  border: none;
+  border-radius: 12px;
+  padding: 0.82rem 1rem;
+  background: linear-gradient(135deg, var(--acento), var(--acento-2));
+  color: #062118;
+  font: inherit;
+  font-weight: 800;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.2s ease, filter 0.2s ease;
+  box-shadow: 0 12px 24px rgba(45, 212, 191, 0.2);
+}
+
+button:hover {
+  filter: brightness(1.04);
+}
+
+button:active {
+  transform: translateY(1px) scale(0.99);
+}
+
+button:focus-visible {
+  outline: 3px solid rgba(98, 240, 164, 0.32);
+  outline-offset: 2px;
+}
+
+#lista-planes {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+#lista-planes li {
+  background: linear-gradient(180deg, rgba(18, 30, 52, 0.95), rgba(8, 17, 31, 0.95));
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+  padding: 1rem;
+  box-shadow: 0 8px 20px rgba(8, 15, 30, 0.24);
+}
+
+#lista-planes h3 {
+  font-size: 1.02rem;
+  margin-bottom: 0.2rem;
+}
+
+#lista-planes .dia {
+  color: var(--acento);
+  font-size: 0.85rem;
+  font-weight: 700;
+  margin: 0.2rem 0 0.75rem;
+}
+
+#lista-planes ul {
+  padding-left: 1.2rem;
+  color: var(--texto-suave);
+  line-height: 1.7;
+  font-size: 0.92rem;
+}
+
+.btn-borrar {
+  background: rgba(255, 107, 107, 0.08);
+  color: #ffb3b3;
+  border: 1px solid rgba(255, 107, 107, 0.4);
+  padding: 0.5rem 0.9rem;
+  font-size: 0.8rem;
+  margin-top: 0.8rem;
+  box-shadow: none;
+}
+
+.btn-borrar:hover {
+  background: rgba(255, 107, 107, 0.18);
+  color: #fff;
+}
+
+#btn-instalar {
+  position: fixed;
+  left: 50%;
+  bottom: calc(1rem + env(safe-area-inset-bottom, 0px));
+  transform: translateX(-50%);
+  min-width: min(82vw, 260px);
+  box-shadow: 0 16px 30px rgba(1, 10, 20, 0.5);
+}
+
+#btn-instalar[hidden] {
+  display: none;
+}
+
+@media (min-width: 640px) {
+  body {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  .topbar,
+  main {
+    max-width: 780px;
+  }
+}
