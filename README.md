@@ -4,17 +4,19 @@ Aplicación web progresiva (PWA) para gestionar planes de entrenamiento, recorda
 
 ## Despliegue en GitHub Pages
 
-El proyecto está preparado para publicarse con GitHub Actions usando la carpeta `SHD` como artefacto de la web.
+El workflow publica únicamente el contenido de `SHD` en la raíz de la rama `gh-pages`.
 
 ### Requisitos
 - Tener un repositorio remoto en GitHub.
-- En el repositorio, activar GitHub Pages con la opción **GitHub Actions**.
+- En el repositorio, configura GitHub Pages para publicar desde la rama `gh-pages`, carpeta `/(root)`.
 
 ### Publicación
 1. Conecta este repositorio a tu remoto de GitHub.
 2. Haz push a la rama `main`.
-3. En GitHub, ve a `Settings > Pages` y confirma que está usando **GitHub Actions**.
+3. En GitHub, ve a `Settings > Pages`.
+4. En **Build and deployment**, selecciona **Deploy from a branch**.
+5. Selecciona la rama `gh-pages` y la carpeta `/(root)`, y pulsa **Save**.
 
-La aplicación quedará disponible en:
+Cada push a `main` vuelve a publicar solo `SHD`. La aplicación quedará disponible en:
 
 `https://<usuario>.github.io/<repositorio>/`
