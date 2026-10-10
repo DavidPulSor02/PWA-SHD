@@ -1,10 +1,10 @@
-const VERSION = "v1";
+const VERSION = "v2";
 const CACHE = `entrenos-${VERSION}`;
 
 const ARCHIVOS = [
   "./",
   "./index.html",
-  "./styles.css",
+  "./style.css",
   "./app.js",
   "./manifest.webmanifest",
   "./icons/icon-192.png",
