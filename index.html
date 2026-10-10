@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mis Entrenamientos</title>
+
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="theme-color" content="#0f172a">
+
+  <!-- iOS -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Entrenos">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <h1>💪 Mis Planes</h1>
+    <span id="estado-red" class="badge">En línea</span>
+  </header>
+
+  <main>
+    <section class="card">
+      <h2>Nuevo plan</h2>
+      <form id="form-plan">
+        <input id="nombre-plan" type="text" placeholder="Nombre del plan (ej. Fuerza 4 días)" required>
+        <input id="dia-plan" type="text" placeholder="Día (ej. Lunes - Pecho)" required>
+        <textarea id="ejercicios-plan" rows="4"
+          placeholder="Un ejercicio por línea&#10;Press banca 4x8&#10;Fondos 3x12"></textarea>
+        <button type="submit">Guardar plan</button>
+      </form>
+    </section>
+
+    <section class="card">
+      <h2>Recordatorio</h2>
+      <label for="hora-recordatorio">Hora diaria</label>
+      <input id="hora-recordatorio" type="time" value="18:00">
+      <button id="btn-notificaciones" type="button">Activar notificaciones</button>
+    </section>
+
+    <section>
+      <h2>Planes guardados</h2>
+      <ul id="lista-planes"></ul>
+    </section>
+  </main>
+
+  <button id="btn-instalar" hidden>📲 Instalar app</button>
+
+  <script src="app.js"></script>
+</body>
+</html>
